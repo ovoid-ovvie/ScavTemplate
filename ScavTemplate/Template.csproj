@@ -13,18 +13,167 @@
 		</RestoreAdditionalProjectSources>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
+	<ItemGroup>
+		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
 
-  <Import Project="../vars.targets" />
+	<Import Project="../vars.targets" />
+
+  <ItemGroup>
+    <None Remove="en-AU.json" />
+    <None Remove="EN.json" />
+    <None Remove="Images\anabolicsteroids.png" />
+    <None Remove="Images\basebottle.png" />
+    <None Remove="Images\basesyringe.png" />
+    <None Remove="Images\breakthrough.png" />
+    <None Remove="Images\brownie.png" />
+    <None Remove="Images\candy.png" />
+    <None Remove="Images\cannabinoidintoxication.png" />
+    <None Remove="Images\cannabis.png" />
+    <None Remove="Images\carfentanil.png" />
+    <None Remove="Images\cigar.png" />
+    <None Remove="Images\cigarette.png" />
+    <None Remove="Images\clonidinebottle.png" />
+    <None Remove="Images\clonidinesyringe.png" />
+    <None Remove="Images\cookie.png" />
+    <None Remove="Images\corticosteroids.png" />
+    <None Remove="Images\diazepambottle.png" />
+    <None Remove="Images\diazepamsyringe.png" />
+    <None Remove="Images\diphenhydramine.png" />
+    <None Remove="Images\dissociating.png" />
+    <None Remove="Images\diuresis.png" />
+    <None Remove="Images\dmt.png" />
+    <None Remove="Images\drugoverdose.png" />
+    <None Remove="Images\elsewhere.png" />
+    <None Remove="Images\emptyjoint.png" />
+    <None Remove="Images\flumazenilsyringe.png" />
+    <None Remove="Images\foil.png" />
+    <None Remove="Images\glasswareset.png" />
+    <None Remove="Images\hungerblocked.png" />
+    <None Remove="Images\hydrochlorothiazidebottle.png" />
+    <None Remove="Images\hydrochlorothiazidesyringe.png" />
+    <None Remove="Images\illegalcigarettes.png" />
+    <None Remove="Images\joint.png" />
+    <None Remove="Images\ketaminesyringe.png" />
+    <None Remove="Images\legalcigarettes.png" />
+    <None Remove="Images\lsd.png" />
+    <None Remove="Images\lye.png" />
+    <None Remove="Images\mdma.png" />
+    <None Remove="Images\nailpolish.png" />
+    <None Remove="Images\nailpolishremover.png" />
+    <None Remove="Images\nicotinated.png" />
+    <None Remove="Images\nicotinegum.png" />
+    <None Remove="Images\nicotinegumitem.png" />
+    <None Remove="Images\nicotinepatch.png" />
+    <None Remove="Images\nicotinepatchitem.png" />
+    <None Remove="Images\nicotinewithdrawal.png" />
+    <None Remove="Images\perfume.png" />
+    <None Remove="Images\phenobarbitalbottle.png" />
+    <None Remove="Images\phenobarbitalsyringe.png" />
+    <None Remove="Images\phstrips.png" />
+    <None Remove="Images\pituitarygland.png" />
+    <None Remove="Images\precisionscale.png" />
+    <None Remove="Images\prednisonebottle.png" />
+    <None Remove="Images\psilocybin.png" />
+    <None Remove="Images\roadmarker.png" />
+    <None Remove="Images\rolling.png" />
+    <None Remove="Images\rootbeercan.png" />
+    <None Remove="Images\sedated.png" />
+    <None Remove="Images\semaglutidesyringe.png" />
+    <None Remove="Images\separationkit.png" />
+    <None Remove="Images\spin.png" />
+    <None Remove="Images\spinjoint.png" />
+    <None Remove="Images\steroidabuse.png" />
+    <None Remove="Images\succinylcholinesyringe.png" />
+    <None Remove="Images\testosteronesyringe.png" />
+    <None Remove="Images\tobacco.png" />
+    <None Remove="Images\tobaccojoint.png" />
+    <None Remove="Images\tripping.png" />
+    <None Remove="Images\vigatrodipsinsyringe.png" />
+    <None Remove="Images\woodash.png" />
+    <None Remove="Sound\smoking.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\anabolicsteroids.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\basebottle.png" />
+    <EmbeddedResource Include="Images\basesyringe.png" />
+    <EmbeddedResource Include="Images\breakthrough.png" />
+    <EmbeddedResource Include="Images\brownie.png" />
+    <EmbeddedResource Include="Images\candy.png" />
+    <EmbeddedResource Include="Images\cannabinoidintoxication.png" />
+    <EmbeddedResource Include="Images\cannabis.png" />
+    <EmbeddedResource Include="Images\carfentanil.png" />
+    <EmbeddedResource Include="Images\cigar.png" />
+    <EmbeddedResource Include="Images\cigarette.png" />
+    <EmbeddedResource Include="Images\clonidinebottle.png" />
+    <EmbeddedResource Include="Images\clonidinesyringe.png" />
+    <EmbeddedResource Include="Images\cookie.png" />
+    <EmbeddedResource Include="Images\corticosteroids.png" />
+    <EmbeddedResource Include="Images\diazepambottle.png" />
+    <EmbeddedResource Include="Images\diazepamsyringe.png" />
+    <EmbeddedResource Include="Images\diphenhydramine.png" />
+    <EmbeddedResource Include="Images\dissociating.png" />
+    <EmbeddedResource Include="Images\diuresis.png" />
+    <EmbeddedResource Include="Images\dmt.png" />
+    <EmbeddedResource Include="Images\drugoverdose.png" />
+    <EmbeddedResource Include="Images\elsewhere.png" />
+    <EmbeddedResource Include="Images\emptyjoint.png" />
+    <EmbeddedResource Include="Images\flumazenilsyringe.png" />
+    <EmbeddedResource Include="Images\foil.png" />
+    <EmbeddedResource Include="Images\glasswareset.png" />
+    <EmbeddedResource Include="Images\hungerblocked.png" />
+    <EmbeddedResource Include="Images\hydrochlorothiazidebottle.png" />
+    <EmbeddedResource Include="Images\illegalcigarettes.png" />
+    <EmbeddedResource Include="Images\joint.png" />
+    <EmbeddedResource Include="Images\ketaminesyringe.png" />
+    <EmbeddedResource Include="Images\legalcigarettes.png" />
+    <EmbeddedResource Include="Images\lsd.png" />
+    <EmbeddedResource Include="Images\lye.png" />
+    <EmbeddedResource Include="Images\mdma.png" />
+    <EmbeddedResource Include="Images\nailpolish.png" />
+    <EmbeddedResource Include="Images\nailpolishremover.png" />
+    <EmbeddedResource Include="Images\nicotinated.png" />
+    <EmbeddedResource Include="Images\nicotinegum.png" />
+    <EmbeddedResource Include="Images\nicotinegumitem.png" />
+    <EmbeddedResource Include="Images\nicotinepatch.png" />
+    <EmbeddedResource Include="Images\nicotinepatchitem.png" />
+    <EmbeddedResource Include="Images\nicotinewithdrawal.png" />
+    <EmbeddedResource Include="Images\perfume.png" />
+    <EmbeddedResource Include="Images\phenobarbitalbottle.png" />
+    <EmbeddedResource Include="Images\phenobarbitalsyringe.png" />
+    <EmbeddedResource Include="Images\phstrips.png" />
+    <EmbeddedResource Include="Images\pituitarygland.png" />
+    <EmbeddedResource Include="Images\precisionscale.png" />
+    <EmbeddedResource Include="Images\prednisonebottle.png" />
+    <EmbeddedResource Include="Images\psilocybin.png" />
+    <EmbeddedResource Include="Images\roadmarker.png" />
+    <EmbeddedResource Include="Images\rolling.png" />
+    <EmbeddedResource Include="Images\rootbeercan.png" />
+    <EmbeddedResource Include="Images\sedated.png" />
+    <EmbeddedResource Include="Images\semaglutidesyringe.png" />
+    <EmbeddedResource Include="Images\separationkit.png" />
+    <EmbeddedResource Include="Images\spin.png" />
+    <EmbeddedResource Include="Images\spinjoint.png" />
+    <EmbeddedResource Include="Images\steroidabuse.png" />
+    <EmbeddedResource Include="Images\testosteronesyringe.png" />
+    <EmbeddedResource Include="Images\thirstblocked.png" />
+    <EmbeddedResource Include="Images\tobacco.png" />
+    <EmbeddedResource Include="Images\tobaccojoint.png" />
+    <EmbeddedResource Include="Images\tripping.png" />
+    <EmbeddedResource Include="Images\vigatrodipsinsyringe.png" />
+    <EmbeddedResource Include="Images\woodash.png" />
+    <EmbeddedResource Include="Sound\smoking.wav" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-    <PackageReference
-      Include="BepInEx.AssemblyPublicizer.MSBuild"
-      Version="0.4.2"
-      PrivateAssets="all"
-    />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
     <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" IncludeAssets="compile" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" IncludeAssets="compile" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" />
@@ -43,11 +192,13 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference
-      Include="Microsoft.NETFramework.ReferenceAssemblies"
-      Version="1.0.2"
-      PrivateAssets="all"
-    />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CUCoreLib">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Casualties Unknown Demo\BepInEx\plugins\CUCoreLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <PropertyGroup>
@@ -66,10 +217,7 @@
   <CombinePath BasePath="$(OutDir)" Paths="$(RequiredFilesToCopy)">
     <Output TaskParameter="CombinedPaths" ItemName="RequiredFilesToCopy_Combined" />
   </CombinePath>
-  <Copy
-    SourceFiles="@(RequiredFilesToCopy_Combined)"
-      DestinationFolder="$(BepInExDir)/plugins/$(ProjectName)"
-  />
+  <Copy SourceFiles="@(RequiredFilesToCopy_Combined)" DestinationFolder="$(BepInExDir)/plugins/$(ProjectName)" />
 </Target>
 
   <Target Name="CopyFoldersToPluginsFolder" AfterTargets="AfterBuild" Condition="'$(RequiredFoldersToCopy)'!=''">
@@ -77,9 +225,6 @@
     <RequiredFolders Include="$(RequiredFoldersToCopy.Split(';'))" />
     <FilesToCopy Include="%(RequiredFolders.Identity)/**/*" />
   </ItemGroup>
-  <Copy
-    SourceFiles="@(FilesToCopy)"
-      DestinationFiles="@(FilesToCopy->'$(BepInExDir)/plugins/$(ProjectName)/%(Identity)')"
-  />
+  <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(BepInExDir)/plugins/$(ProjectName)/%(Identity)')" />
 </Target>
 </Project>
