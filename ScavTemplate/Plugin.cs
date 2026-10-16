@@ -4,14 +4,15 @@ using BepInEx;
 using BepInEx.Logging;
 using CUCoreLib.Data;
 using CUCoreLib.Helpers;
+using CUCoreLib.Networking;
 using CUCoreLib.Registries;
 using CUCoreLib.Saving;
-using CUCoreLib.Networking;
 using HarmonyLib;
 using MonoMod.RuntimeDetour;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Instrumentation;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -19,7 +20,7 @@ using UnityEngine;
 using UnityEngine.Bindings;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
-using System.Linq;
+using SubEx;
 
 namespace SubEx
 {
@@ -29,7 +30,7 @@ namespace SubEx
     {
         public const string ModGUID = "com.shiri.substancesExpanded";
         public const string ModName = "Shiri's Substances Expanded";
-        public const string ModVersion = "1.2.0";
+        public const string ModVersion = "2.0.1";
 
         internal static new ManualLogSource Logger;
         private readonly Harmony _harmony = new(ModGUID);
@@ -116,6 +117,7 @@ namespace SubEx
             CUCoreUtils.OnLastStand += OnLastStand;
             CUCoreUtils.OnHeal += OnLastStand;
             DoStuff();
+            gameObject.AddComponent<EpilepsyWarning>().Initialize(Config);
         }
 
         private void DoStuff()
@@ -980,6 +982,7 @@ namespace SubEx
                 scaleWeightWithCondition = true,
                 weight = 0.25f,
                 value = 18,
+                ignoreDepression = true,
                 rec = new Recognition(8),
                 Syringe = new SyringeProperties
                 {
@@ -1128,6 +1131,7 @@ namespace SubEx
                 value = 15,
                 usable = true,
                 tags = "medicine",
+                ignoreDepression = true,
                 rec = new Recognition(2),
                 useAction = (body, item) =>
                 {

@@ -368,7 +368,7 @@ public static class MDMAReputationBoost
         }
         if (statusTHC.Reception > 0f)
         {
-            __instance.reputation -= statusTHC.Reception >= 55f ? 15f : 7.5f;
+            //__instance.reputation -= statusTHC.Reception >= 55f ? 15f : 7.5f;
             string[] lines = new string[0];
             if (__instance.character == 0)
             {
