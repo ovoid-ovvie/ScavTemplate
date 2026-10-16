@@ -846,34 +846,34 @@ public static class HandleBodyStatusUpdate
             if (__instance.thirst < prev.Thirst)
             {
                 float difference = prev.Thirst - __instance.thirst;
-                MultiplayerApi.Apply(__instance, "thirst", -difference);
-                //__instance.thirst -= difference;
+                //MultiplayerApi.Apply(__instance, "thirst", -difference);
+                __instance.thirst -= difference;
             }
         }
         if (statusThirstBlock.Reception > 0f && !statusThirstBlock.Reverse)
         {
             if (__instance.thirst < prev.Thirst)
             {
-                MultiplayerApi.ApplyAbsolute(__instance, "thirst", prev.Thirst);
-                //__instance.thirst = prev.Thirst;
+                //MultiplayerApi.ApplyAbsolute(__instance, "thirst", prev.Thirst);
+                __instance.thirst = prev.Thirst;
             }
         }
         else if (statusThirstBlock.Reception > 0f && statusThirstBlock.Reverse)
         {
-            MultiplayerApi.Apply(__instance, "thirst", -(1f * Time.deltaTime));
-            //__instance.thirst -= 1f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "thirst", -(1f * Time.deltaTime));
+            __instance.thirst -= 1f * Time.deltaTime;
         }
         if (statusDiuretic.Reception > 0)
         {
-            MultiplayerApi.Apply(__instance, "thirst", -(0.025f * statusDiuretic.Reception * Time.deltaTime));
-            //__instance.thirst -= 0.025f * statusDiuretic.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "thirst", -(0.025f * statusDiuretic.Reception * Time.deltaTime));
+            __instance.thirst -= 0.025f * statusDiuretic.Reception * Time.deltaTime;
         }
         if ((statusHungerBlock.Reception > 0f && __instance.hunger < 99.9f) || ((statusNicotine.ActualReception > 0f && statusNicotine.Tolerance <= 27.5f) && __instance.hunger < 99.9f))
         {
             if (__instance.hunger < prev.Hunger)
             {
-                MultiplayerApi.ApplyAbsolute(__instance, "hunger", prev.Hunger);
-                //__instance.hunger = prev.Hunger;
+                //MultiplayerApi.ApplyAbsolute(__instance, "hunger", prev.Hunger);
+                __instance.hunger = prev.Hunger;
             }
         }
         //flag.SedativeReception = statusAntihistamine.Reception + statusAlpha2.Reception + statusBenzo.Reception + statusBarbiturate.Reception + statusZDrug.Reception;
@@ -888,41 +888,41 @@ public static class HandleBodyStatusUpdate
             else if (statusAntihistamine.Reception <= 65)
             {
                 statusAntihistamine.Toxicity = 1;
-                MultiplayerApi.Apply(__instance, "temperature", 2.75f / 60f * Time.deltaTime);
-                //__instance.temperature += 2.75f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", 2.75f / 60f * Time.deltaTime);
+                __instance.temperature += 2.75f / 60f * Time.deltaTime;
                 if (__instance.limbs[0].pain < 25)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.02f * statusAntihistamine.Reception * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.02f * statusAntihistamine.Reception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.02f * statusAntihistamine.Reception * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.02f * statusAntihistamine.Reception * Time.deltaTime;
                 }
             }
             else if (statusAntihistamine.Reception <= 90)
             {
                 statusAntihistamine.Toxicity = 2;
-                MultiplayerApi.Apply(__instance, "temperature", 5f / 60f * Time.deltaTime);
-                //__instance.temperature += 5f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", 5f / 60f * Time.deltaTime);
+                __instance.temperature += 5f / 60f * Time.deltaTime;
                 if (__instance.limbs[0].pain < 35)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.02f * statusAntihistamine.Reception * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.02f * statusAntihistamine.Reception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.02f * statusAntihistamine.Reception * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.02f * statusAntihistamine.Reception * Time.deltaTime;
                 }
             }
             else
             {
                 statusAntihistamine.Toxicity = 3;
-                MultiplayerApi.Apply(__instance, "temperature", 6.75f / 60f * Time.deltaTime);
-                //__instance.temperature += 6.75f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", 6.75f / 60f * Time.deltaTime);
+                __instance.temperature += 6.75f / 60f * Time.deltaTime;
                 if (__instance.limbs[0].pain < 50)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.025f * statusAntihistamine.Reception * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.025f * statusAntihistamine.Reception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.025f * statusAntihistamine.Reception * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.025f * statusAntihistamine.Reception * Time.deltaTime;
                 }
             }
         }
         if (statusAlpha2.Reception > 0f)
         {
-            MultiplayerApi.Apply(__instance, "averagePain", -(0.1f * statusAlpha2.Reception * Time.deltaTime));
-            //__instance.averagePain -= 0.1f * statusAlpha2.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "averagePain", -(0.1f * statusAlpha2.Reception * Time.deltaTime));
+            __instance.averagePain -= 0.1f * statusAlpha2.Reception * Time.deltaTime;
             if (statusAlpha2.Reception <= 55)
             {
                 statusAlpha2.Toxicity = 0;
@@ -930,24 +930,24 @@ public static class HandleBodyStatusUpdate
             else if (statusAlpha2.Reception <= 65)
             {
                 statusAlpha2.Toxicity = 1;
-                MultiplayerApi.Apply(__instance, "temperature", -(1.5f / 60f * Time.deltaTime));
-                //__instance.temperature -= 1.5f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", -(1.5f / 60f * Time.deltaTime));
+                __instance.temperature -= 1.5f / 60f * Time.deltaTime;
             }
             else if (statusAlpha2.Reception <= 80)
             {
                 statusAlpha2.Toxicity = 2;
-                MultiplayerApi.Apply(__instance, "temperature", -(2.75f / 60f * Time.deltaTime));
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(0.5f * 4f / 60f * Time.deltaTime));
-                //__instance.temperature -= 2.75f / 60f * Time.deltaTime;
-                //__instance.respiratoryRate -= 0.5f * 4f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", -(2.75f / 60f * Time.deltaTime));
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(0.5f * 4f / 60f * Time.deltaTime));
+                __instance.temperature -= 2.75f / 60f * Time.deltaTime;
+                __instance.respiratoryRate -= 0.5f * 4f / 60f * Time.deltaTime;
             }
             else
             {
                 statusAlpha2.Toxicity = 3;
-                MultiplayerApi.Apply(__instance, "temperature", -(4.5f / 60f * Time.deltaTime));
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(2f / 60f * Time.deltaTime));
-                //__instance.temperature -= 4.5f / 60f * Time.deltaTime;
-                //__instance.respiratoryRate -= 2f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", -(4.5f / 60f * Time.deltaTime));
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(2f / 60f * Time.deltaTime));
+                __instance.temperature -= 4.5f / 60f * Time.deltaTime;
+                __instance.respiratoryRate -= 2f / 60f * Time.deltaTime;
             }
         }
         if (statusBenzo.ActualReception > 0f)
@@ -965,27 +965,27 @@ public static class HandleBodyStatusUpdate
                 statusBenzo.Toxicity = 2;
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", -(0.05f * statusBenzo.ActualReception * Time.deltaTime));
-                    //__instance.consciousness -= 0.05f * statusBenzo.ActualReception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", -(0.05f * statusBenzo.ActualReception * Time.deltaTime));
+                    __instance.consciousness -= 0.05f * statusBenzo.ActualReception * Time.deltaTime;
                 }
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(1f * 4f / 60f * Time.deltaTime));
-                //__instance.respiratoryRate -= 1f * 4f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(1f * 4f / 60f * Time.deltaTime));
+                __instance.respiratoryRate -= 1f * 4f / 60f * Time.deltaTime;
             }
             else
             {
                 statusBenzo.Toxicity = 3;
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", -(0.115f * statusBenzo.ActualReception * Time.deltaTime));
-                    //__instance.consciousness -= 0.115f * statusBenzo.ActualReception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", -(0.115f * statusBenzo.ActualReception * Time.deltaTime));
+                    __instance.consciousness -= 0.115f * statusBenzo.ActualReception * Time.deltaTime;
                 }
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(5f * 4f / 60f * Time.deltaTime));
-                //__instance.respiratoryRate -= 5f * 4f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(5f * 4f / 60f * Time.deltaTime));
+                __instance.respiratoryRate -= 5f * 4f / 60f * Time.deltaTime;
             }
             if (statusBenzo.Toxicity > 0)
             {
-                MultiplayerApi.Apply(__instance, "secondCheckTime", Time.deltaTime);
-                //__instance.secondCheckTime += Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "secondCheckTime", Time.deltaTime);
+                __instance.secondCheckTime += Time.deltaTime;
                 System.Random rand = new System.Random();
                 float mult = statusBenzo.Toxicity switch
                 {
@@ -1001,65 +1001,65 @@ public static class HandleBodyStatusUpdate
                     __instance.Ragdoll();
                     flag.TripChance = 0f;
                 }
-                MultiplayerApi.Apply(__instance, "secondCheckTime", -Time.deltaTime);
-                //__instance.secondCheckTime -= Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "secondCheckTime", -Time.deltaTime);
+                __instance.secondCheckTime -= Time.deltaTime;
             }
         }
         else if (statusBenzo.ActualReception < 0f)
         {
             if (statusBenzo.ActualReception <= -28f)
             {
-                MultiplayerApi.Apply(__instance, "happiness", -(2f * Time.deltaTime));
-                MultiplayerApi.Apply(__instance, "brainHealth", -(0.25f * Time.deltaTime));
-                //__instance.happiness -= 2f * Time.deltaTime;
-                //__instance.brainHealth -= 0.25f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "happiness", -(2f * Time.deltaTime));
+                //MultiplayerApi.Apply(__instance, "brainHealth", -(0.25f * Time.deltaTime));
+                __instance.happiness -= 2f * Time.deltaTime;
+                __instance.brainHealth -= 0.25f * Time.deltaTime;
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", -(7.5f / 60f * Time.deltaTime));
-                    //__instance.consciousness -= 7.5f / 60f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", -(7.5f / 60f * Time.deltaTime));
+                    __instance.consciousness -= 7.5f / 60f * Time.deltaTime;
                 }
                 if (__instance.limbs[0].pain <= 45f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.73f * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.73f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.73f * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.73f * Time.deltaTime;
                 }
                 if (__instance.traumaAmount <= 65f)
                 {
-                    MultiplayerApi.Apply(__instance, "traumaAmount", 0.3f * Time.deltaTime);
-                    //__instance.traumaAmount += 0.3f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "traumaAmount", 0.3f * Time.deltaTime);
+                    __instance.traumaAmount += 0.3f * Time.deltaTime;
                 }
             }
             else if (statusBenzo.ActualReception <= -20f)
             {
                 if (__instance.traumaAmount <= 65f)
                 {
-                    MultiplayerApi.Apply(__instance, "traumaAmount", 0.3f * Time.deltaTime);
-                    //__instance.traumaAmount += 0.3f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "traumaAmount", 0.3f * Time.deltaTime);
+                    __instance.traumaAmount += 0.3f * Time.deltaTime;
                 }
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", -(0.2f * Time.deltaTime));
-                    //__instance.consciousness -= 0.2f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", -(0.2f * Time.deltaTime));
+                    __instance.consciousness -= 0.2f * Time.deltaTime;
                 }
                 if (__instance.limbs[0].pain <= 45f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.73f * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.73f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.73f * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.73f * Time.deltaTime;
                 }
-                MultiplayerApi.Apply(__instance, "happiness", -(0.175f * Time.deltaTime));
-                //__instance.happiness -= 0.175f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "happiness", -(0.175f * Time.deltaTime));
+                __instance.happiness -= 0.175f * Time.deltaTime;
             }
             else if (statusBenzo.ActualReception <= -12f)
             {
                 if (__instance.sicknessAmount <= 50f)
                 {
-                    MultiplayerApi.Apply(__instance, "sicknessAmount", 1f * Time.deltaTime);
-                    //__instance.sicknessAmount += 1f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "sicknessAmount", 1f * Time.deltaTime);
+                    __instance.sicknessAmount += 1f * Time.deltaTime;
                 }
                 if (__instance.traumaAmount <= 35f)
                 {
-                    MultiplayerApi.Apply(__instance, "traumaAmount", 0.15f * Time.deltaTime);
-                    //__instance.traumaAmount += 0.15f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "traumaAmount", 0.15f * Time.deltaTime);
+                    __instance.traumaAmount += 0.15f * Time.deltaTime;
                 }
             }
         }
@@ -1074,56 +1074,56 @@ public static class HandleBodyStatusUpdate
                 statusBarbiturate.Toxicity = 1;
                 if (__instance.limbs[0].pain <= 70f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
                 }
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", 0.15f * Time.deltaTime);
-                    //__instance.consciousness -= 0.15f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", 0.15f * Time.deltaTime);
+                    __instance.consciousness -= 0.15f * Time.deltaTime;
                 }
-                MultiplayerApi.Apply(__instance, "temperature", -(2f / 60f * Time.deltaTime));
-                //__instance.temperature -= 2f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", -(2f / 60f * Time.deltaTime));
+                __instance.temperature -= 2f / 60f * Time.deltaTime;
             }
             else if (statusBarbiturate.Reception <= 70f)
             {
                 statusBarbiturate.Toxicity = 2;
                 if (__instance.limbs[0].pain <= 70f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
-                    //__instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
+                    __instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
                 }
                 if (__instance.consciousness >= 60f)
                 {
-                    MultiplayerApi.Apply(__instance, "consciousness", 0.25f * Time.deltaTime);
-                    //__instance.consciousness -= 0.25f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "consciousness", 0.25f * Time.deltaTime);
+                    __instance.consciousness -= 0.25f * Time.deltaTime;
                 }
-                MultiplayerApi.Apply(__instance, "temperature", -(5f / 60f * Time.deltaTime));
-                //__instance.temperature -= 5f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", -(5f / 60f * Time.deltaTime));
+                __instance.temperature -= 5f / 60f * Time.deltaTime;
             }
             else
             {
                 statusBarbiturate.Toxicity = 3;
-                MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
-                MultiplayerApi.Apply(__instance, "consciousness", -(0.25f * Time.deltaTime));
-                MultiplayerApi.Apply(__instance, "temperature", -(10f / 60f * Time.deltaTime));
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(0.5f * 4f * Time.deltaTime));
-                //__instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
-                //__instance.consciousness -= 0.25f * Time.deltaTime;
-                //__instance.temperature -= 10f / 60f * Time.deltaTime; 
-                //__instance.respiratoryRate -= 0.5f * 4f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.06f * statusBarbiturate.Reception * Time.deltaTime);
+                //MultiplayerApi.Apply(__instance, "consciousness", -(0.25f * Time.deltaTime));
+                //MultiplayerApi.Apply(__instance, "temperature", -(10f / 60f * Time.deltaTime));
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(0.5f * 4f * Time.deltaTime));
+                __instance.limbs[0].pain += 0.06f * statusBarbiturate.Reception * Time.deltaTime;
+                __instance.consciousness -= 0.25f * Time.deltaTime;
+                __instance.temperature -= 10f / 60f * Time.deltaTime;
+                __instance.respiratoryRate -= 0.5f * 4f * Time.deltaTime;
             }
         }
         if (statusKetamine.Reception > 0f)
         {
-            MultiplayerApi.ApplyAbsolute(__instance, "averagePain", Math.Max(0, __instance.averagePain - statusKetamine.Reception * 0.635f * Time.deltaTime));
-            //__instance.averagePain = Math.Max(0, __instance.averagePain - statusKetamine.Reception * 0.635f * Time.deltaTime);
+            //MultiplayerApi.ApplyAbsolute(__instance, "averagePain", Math.Max(0, __instance.averagePain - statusKetamine.Reception * 0.635f * Time.deltaTime));
+            __instance.averagePain = Math.Max(0, __instance.averagePain - statusKetamine.Reception * 0.635f * Time.deltaTime);
             Limb[] limbs = __instance.limbs;
             for (int i = 0; i < limbs.Length; i++)
             {
                 Limb limb = limbs[i];
-                MultiplayerApi.ApplyAbsolute(limb, "pain", Math.Max(0, limb.pain - statusKetamine.Reception * 0.635f * Time.deltaTime));
-                //limb.pain = Math.Max(0, limb.pain - statusKetamine.Reception * 0.635f * Time.deltaTime);
+                //MultiplayerApi.ApplyAbsolute(limb, "pain", Math.Max(0, limb.pain - statusKetamine.Reception * 0.635f * Time.deltaTime));
+                limb.pain = Math.Max(0, limb.pain - statusKetamine.Reception * 0.635f * Time.deltaTime);
             }
             if (statusKetamine.Reception <= 60f)
             {
@@ -1134,8 +1134,8 @@ public static class HandleBodyStatusUpdate
                 statusKetamine.Toxicity = 1;
                 if (__instance.sicknessAmount <= 50f)
                 {
-                    MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
-                    //__instance.sicknessAmount += 0.025f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
+                    __instance.sicknessAmount += 0.025f * Time.deltaTime;
                 }
             }
             else if (statusKetamine.Reception <= 85f)
@@ -1143,17 +1143,17 @@ public static class HandleBodyStatusUpdate
                 statusKetamine.Toxicity = 2;
                 if (__instance.sicknessAmount <= 70f)
                 {
-                    MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
-                    //__instance.sicknessAmount += 0.025f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
+                    __instance.sicknessAmount += 0.025f * Time.deltaTime;
                 }
             }
             else
             {
                 statusKetamine.Toxicity = 3;
-                MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
-                MultiplayerApi.Apply(__instance, "respiratoryRate", -(15f * 4f / 60f * Time.deltaTime));
-                //__instance.sicknessAmount += 0.025f * Time.deltaTime;
-                //__instance.respiratoryRate -= 15f * 4f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "sicknessAmount", 0.025f * Time.deltaTime);
+                //MultiplayerApi.Apply(__instance, "respiratoryRate", -(15f * 4f / 60f * Time.deltaTime));
+                __instance.sicknessAmount += 0.025f * Time.deltaTime;
+                __instance.respiratoryRate -= 15f * 4f / 60f * Time.deltaTime;
             }
         }
         if (statusMDMA.Reception > 0f)
@@ -1167,8 +1167,8 @@ public static class HandleBodyStatusUpdate
                 statusMDMA.Toxicity = 1;
                 if (__instance.limbs[0].pain < 13.5f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
-                    //__instance.limbs[0].pain += 1f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
+                    __instance.limbs[0].pain += 1f * Time.deltaTime;
                 }
             }
             else if (statusMDMA.Reception <= 85f)
@@ -1176,8 +1176,8 @@ public static class HandleBodyStatusUpdate
                 statusMDMA.Toxicity = 2;
                 if (__instance.limbs[0].pain < 25f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
-                    //__instance.limbs[0].pain += 1f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
+                    __instance.limbs[0].pain += 1f * Time.deltaTime;
                 }
                 System.Random rand = new System.Random();
                 flag.TripChance += 1f * Time.deltaTime;
@@ -1187,16 +1187,16 @@ public static class HandleBodyStatusUpdate
                     __instance.Ragdoll();
                     flag.TripChance = 0f;
                 }
-                MultiplayerApi.Apply(__instance, "temperature", 3f / 60f * Time.deltaTime);
-                //__instance.temperature += 3f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "temperature", 3f / 60f * Time.deltaTime);
+                __instance.temperature += 3f / 60f * Time.deltaTime;
             }
             else
             {
                 statusMDMA.Toxicity = 3;
                 if (__instance.limbs[0].pain < 32.5f)
                 {
-                    MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
-                    //__instance.limbs[0].pain += 1f * Time.deltaTime;
+                    //MultiplayerApi.Apply(__instance.limbs[0], "pain", 1f * Time.deltaTime);
+                    __instance.limbs[0].pain += 1f * Time.deltaTime;
                 }
                 System.Random rand = new System.Random();
                 flag.TripChance += 1f * Time.deltaTime;
@@ -1206,10 +1206,10 @@ public static class HandleBodyStatusUpdate
                     __instance.Ragdoll();
                     flag.TripChance = 0f;
                 }
-                MultiplayerApi.Apply(__instance, "strokeAmount", 12.5f / 60f * Time.deltaTime);
-                MultiplayerApi.Apply(__instance, "temperature", 5f / 60f * Time.deltaTime);
-                //__instance.strokeAmount += 12.5f / 60f * Time.deltaTime;
-                //__instance.temperature += 5f / 60f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "strokeAmount", 12.5f / 60f * Time.deltaTime);
+                //MultiplayerApi.Apply(__instance, "temperature", 5f / 60f * Time.deltaTime);
+                __instance.strokeAmount += 12.5f / 60f * Time.deltaTime;
+                __instance.temperature += 5f / 60f * Time.deltaTime;
             }
         }
         //if (flag.Sedated && !__instance.sleeping && !flag.SedativeConsume)
@@ -1226,45 +1226,45 @@ public static class HandleBodyStatusUpdate
         //}
         if (statusCBD.Reception > 0f)
         {
-            MultiplayerApi.Apply(__instance, "averagePain", -(0.145f * statusCBD.Reception * Time.deltaTime));
-            //__instance.averagePain -= 0.145f * statusCBD.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "averagePain", -(0.145f * statusCBD.Reception * Time.deltaTime));
+            __instance.averagePain -= 0.145f * statusCBD.Reception * Time.deltaTime;
         }
         if (statusNicotine.ActualReception >= -35f && statusNicotine.ActualReception < -20f)
         {
             if (__instance.limbs[0].pain < 25)
             {
-                MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.15f * Time.deltaTime);
-                //__instance.limbs[0].pain += 0.15f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.15f * Time.deltaTime);
+                __instance.limbs[0].pain += 0.15f * Time.deltaTime;
             }    
         }
         else if (statusNicotine.ActualReception >= -50f && statusNicotine.ActualReception < -35f)
         {
-            MultiplayerApi.Apply(__instance, "happiness", -(0.1f * Time.deltaTime));
-            //__instance.happiness -= 0.1f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "happiness", -(0.1f * Time.deltaTime));
+            __instance.happiness -= 0.1f * Time.deltaTime;
             if (__instance.traumaAmount <= 35f)
             {
-                MultiplayerApi.Apply(__instance, "traumaAmount", 0.15f * Time.deltaTime);
-                //__instance.traumaAmount += 0.15f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "traumaAmount", 0.15f * Time.deltaTime);
+                __instance.traumaAmount += 0.15f * Time.deltaTime;
             }
             if (__instance.limbs[0].pain < 37.5f)
             {
-                MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.35f * Time.deltaTime);
-                //__instance.limbs[0].pain += 0.35f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.35f * Time.deltaTime);
+                __instance.limbs[0].pain += 0.35f * Time.deltaTime;
             }
         }
         else if (statusNicotine.ActualReception <= -50f)
         {
-            MultiplayerApi.Apply(__instance, "happiness", -(0.225f * Time.deltaTime));
-            //__instance.happiness -= 0.225f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "happiness", -(0.225f * Time.deltaTime));
+            __instance.happiness -= 0.225f * Time.deltaTime;
             if (__instance.traumaAmount <= 65f)
             {
-                MultiplayerApi.Apply(__instance, "traumaAmount", 0.25f * Time.deltaTime);
+                //MultiplayerApi.Apply(__instance, "traumaAmount", 0.25f * Time.deltaTime);
                 __instance.traumaAmount += 0.25f * Time.deltaTime;
             }
             if (__instance.limbs[0].pain < 65f)
             {
-                MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.6f * Time.deltaTime);
-                //__instance.limbs[0].pain += 0.6f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance.limbs[0], "pain", 0.6f * Time.deltaTime);
+                __instance.limbs[0].pain += 0.6f * Time.deltaTime;
             }
         }
         if (statusSteroid.Reception > 0)
@@ -1277,32 +1277,32 @@ public static class HandleBodyStatusUpdate
             if (__instance.happiness < prev.Mood)
             {
                 float difference = prev.Mood - __instance.happiness;
-                MultiplayerApi.ApplyAbsolute(__instance, "happiness", prev.Mood - difference * 1.5f);
-                //__instance.happiness = prev.Mood - difference * 1.5f;
+                //MultiplayerApi.ApplyAbsolute(__instance, "happiness", prev.Mood - difference * 1.5f);
+                __instance.happiness = prev.Mood - difference * 1.5f;
             }
-            MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
-            //__instance.traumaAmount += 0.2f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
+            __instance.traumaAmount += 0.2f * Time.deltaTime;
         }
         else if (statusSteroid.Abuse >= 45)
         {
             if (__instance.happiness < prev.Mood)
             {
                 float difference = prev.Mood - __instance.happiness;
-                MultiplayerApi.ApplyAbsolute(__instance, "happiness", prev.Mood - difference * 1.5f);
-                //__instance.happiness = prev.Mood - difference * 1.5f;
+                //MultiplayerApi.ApplyAbsolute(__instance, "happiness", prev.Mood - difference * 1.5f);
+                __instance.happiness = prev.Mood - difference * 1.5f;
             }
             if (__instance.traumaAmount <= 65f)
             {
-                MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
-                //__instance.traumaAmount += 0.2f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
+                __instance.traumaAmount += 0.2f * Time.deltaTime;
             }
         }
         else if (statusSteroid.Abuse >= 25)
         {
             if (__instance.traumaAmount <= 35f)
             {
-                MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
-                //__instance.traumaAmount += 0.2f * Time.deltaTime;
+                //MultiplayerApi.Apply(__instance, "traumaAmount", 0.2f * Time.deltaTime);
+                __instance.traumaAmount += 0.2f * Time.deltaTime;
             }
         }
         //if (statusCorticosteroid.Reception > 0)
@@ -1323,10 +1323,10 @@ public static class BodyPeriodicChecksUpdate
         {
             return;
         }
-        MultiplayerApi.Apply(__instance, "halfMinuteCheckTime", Time.deltaTime);
-        MultiplayerApi.Apply(__instance, "minuteCheckTime", Time.deltaTime);
-        //__instance.halfMinuteCheckTime += Time.deltaTime;
-        //__instance.minuteCheckTime += Time.deltaTime;
+        //MultiplayerApi.Apply(__instance, "halfMinuteCheckTime", Time.deltaTime);
+        //MultiplayerApi.Apply(__instance, "minuteCheckTime", Time.deltaTime);
+        __instance.halfMinuteCheckTime += Time.deltaTime;
+        __instance.minuteCheckTime += Time.deltaTime;
         SubExFlag flag = __instance.GetStatus<SubExFlag>();
         ThirstBlock statusThirstBlock = __instance.GetStatus<ThirstBlock>();
         HungerBlock statusHungerBlock = __instance.GetStatus<HungerBlock>();
@@ -1614,10 +1614,10 @@ public static class BodyPeriodicChecksUpdate
                 }
             }
         }
-        MultiplayerApi.Apply(__instance, "halfMinuteCheckTime", -Time.deltaTime);
-        MultiplayerApi.Apply(__instance, "minuteCheckTime", -Time.deltaTime);
-        //__instance.halfMinuteCheckTime -= Time.deltaTime;
-        //__instance.minuteCheckTime -= Time.deltaTime;
+        //MultiplayerApi.Apply(__instance, "halfMinuteCheckTime", -Time.deltaTime);
+        //MultiplayerApi.Apply(__instance, "minuteCheckTime", -Time.deltaTime);
+        __instance.halfMinuteCheckTime -= Time.deltaTime;
+        __instance.minuteCheckTime -= Time.deltaTime;
     }
 }
 
@@ -1670,26 +1670,26 @@ public static class BodyCirculationUpdate
 
         if (statusAlpha2.Toxicity == 0)
         {
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.001f * statusAlpha2.Reception * Time.deltaTime);
-            //__instance.bloodVesselSize += 0.001f * statusAlpha2.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.001f * statusAlpha2.Reception * Time.deltaTime);
+            __instance.bloodVesselSize += 0.001f * statusAlpha2.Reception * Time.deltaTime;
         }
         else if (statusAlpha2.Toxicity == 1)
         {
             num5 -= 30f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
-            //__instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
+            __instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
         }
         else if (statusAlpha2.Toxicity == 2)
         {
             num5 -= 40f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
-            //__instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
+            __instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
         }
         else if (statusAlpha2.Toxicity == 3)
         {
             num5 -= 62.5f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
-            //__instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", 0.0015f * statusAlpha2.Reception * Time.deltaTime);
+            __instance.bloodVesselSize += 0.0015f * statusAlpha2.Reception * Time.deltaTime;
         }
 
         if (statusBenzo.Toxicity == 2)
@@ -1717,8 +1717,8 @@ public static class BodyCirculationUpdate
         if (statusSteroid.Abuse >= 70)
         {
             num5 += 132.5f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.004f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.004f * Time.deltaTime;
         }
         else if (statusSteroid.Abuse >= 45)
         {
@@ -1728,21 +1728,21 @@ public static class BodyCirculationUpdate
         else if (statusSteroid.Abuse >= 25)
         {
             num5 += 67.5f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.0003f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.0003f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.0003f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.0003f * Time.deltaTime;
         }
 
         if (statusKetamine.Toxicity == 2)
         {
             num5 += 95f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.00175f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.00175f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.00175f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.00175f * Time.deltaTime;
         }
         else if (statusKetamine.Toxicity == 3)
         {
             num5 += 145f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.004f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.004f * Time.deltaTime;
         }
 
         if (statusMDMA.Toxicity == 1)
@@ -1752,17 +1752,17 @@ public static class BodyCirculationUpdate
         else if (statusMDMA.Toxicity == 2)
         {
             num5 += 90f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.00175f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.00175f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.00175f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.00175f * Time.deltaTime;
         }
         else if (statusMDMA.Toxicity == 3)
         {
             num5 += 120f;
-            MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
-            //__instance.bloodVesselSize -= 0.004f * Time.deltaTime;
+            //MultiplayerApi.Apply(__instance, "bloodVesselSize", -(0.004f * Time.deltaTime));
+            __instance.bloodVesselSize -= 0.004f * Time.deltaTime;
         }
-        MultiplayerApi.ApplyAbsolute(__instance, "heartRate", Mathf.Clamp(Mathf.Lerp(prev.HeartRate, num5, multiplier), 0f, 3000f));
-        //__instance.heartRate = Mathf.Clamp(Mathf.Lerp(prev.HeartRate, num5, multiplier), 0f, 3000f);
+        //MultiplayerApi.ApplyAbsolute(__instance, "heartRate", Mathf.Clamp(Mathf.Lerp(prev.HeartRate, num5, multiplier), 0f, 3000f));
+        __instance.heartRate = Mathf.Clamp(Mathf.Lerp(prev.HeartRate, num5, multiplier), 0f, 3000f);
     }
 }
 
@@ -2519,8 +2519,8 @@ public static class BodyStatusUpdate
         }
         if (statusMDMA.Reception > 0f)
         {
-            MultiplayerApi.Apply(__instance, "happiness", -(0.85f * Time.deltaTime * 0.05f));
-            //__instance.happiness -= 0.85f * Time.deltaTime * 0.05f;
+            //MultiplayerApi.Apply(__instance, "happiness", -(0.85f * Time.deltaTime * 0.05f));
+            __instance.happiness -= 0.85f * Time.deltaTime * 0.05f;
         }    
         if (statusBenzo.Reception > 0)
         {
@@ -2548,8 +2548,8 @@ public static class BodyStatusUpdate
             {
                 num = 0.15f;
             }
-            MultiplayerApi.Apply(__instance, "happiness", -(num * Time.deltaTime * 0.071f));
-            //__instance.happiness -= num * Time.deltaTime * 0.071f;
+            //MultiplayerApi.Apply(__instance, "happiness", -(num * Time.deltaTime * 0.071f));
+            __instance.happiness -= num * Time.deltaTime * 0.071f;
         }
         else if (statusNicotine.Tolerance > 0 && statusNicotine.Reception <= 0)
         {
@@ -2561,13 +2561,13 @@ public static class BodyStatusUpdate
         }
         if (statusCBD.Reception > 0)
         {
-            MultiplayerApi.Apply(__instance, "traumaAmount", 0.25f * Time.deltaTime * 0.059f);
-            //__instance.traumaAmount += 0.25f * Time.deltaTime * 0.059f;
+            //MultiplayerApi.Apply(__instance, "traumaAmount", 0.25f * Time.deltaTime * 0.059f);
+            __instance.traumaAmount += 0.25f * Time.deltaTime * 0.059f;
         }
         if (statusTHC.Reception > 0)
         {
-            MultiplayerApi.Apply(__instance, "happiness", -(0.25f * Time.deltaTime * 0.059f));
-            //__instance.happiness -= 0.25f * Time.deltaTime * 0.059f;
+            //MultiplayerApi.Apply(__instance, "happiness", -(0.25f * Time.deltaTime * 0.059f));
+            __instance.happiness -= 0.25f * Time.deltaTime * 0.059f;
         }
         if (statusCBD.Reception > 150f)
         {
@@ -2581,8 +2581,8 @@ public static class BodyStatusUpdate
         {
             if (__instance.stamina > 100f - statusNicotine.StaminaReduction)
             {
-                MultiplayerApi.ApplyAbsolute(__instance, "stamina", 100f - statusNicotine.StaminaReduction);
-                //__instance.stamina = 100f - statusNicotine.StaminaReduction;
+                //MultiplayerApi.ApplyAbsolute(__instance, "stamina", 100f - statusNicotine.StaminaReduction);
+                __instance.stamina = 100f - statusNicotine.StaminaReduction;
             }
         }
         if (statusNicotine.Reception > 150f)
@@ -2617,12 +2617,12 @@ public static class BodyStatusUpdate
         {
             flag.LethalSedativeMix = true;
             //__instance.overdoseIndex = 2;
-            MultiplayerApi.Apply(__instance, "bloodPressure", -(Time.deltaTime * 2.5f));
-            //__instance.bloodPressure -= Time.deltaTime * 2.5f;
+            //MultiplayerApi.Apply(__instance, "bloodPressure", -(Time.deltaTime * 2.5f));
+            __instance.bloodPressure -= Time.deltaTime * 2.5f;
             if (__instance.respiratoryRate > 70f)
             {
-                MultiplayerApi.ApplyAbsolute(__instance, "respiratoryRate", Mathf.MoveTowards(__instance.respiratoryRate, 70f, Time.deltaTime * 15f));
-                //__instance.respiratoryRate = Mathf.MoveTowards(__instance.respiratoryRate, 70f, Time.deltaTime * 15f);
+                //MultiplayerApi.ApplyAbsolute(__instance, "respiratoryRate", Mathf.MoveTowards(__instance.respiratoryRate, 70f, Time.deltaTime * 15f));
+                __instance.respiratoryRate = Mathf.MoveTowards(__instance.respiratoryRate, 70f, Time.deltaTime * 15f);
             }
             if (!__instance.conscious)
             {
@@ -2630,8 +2630,8 @@ public static class BodyStatusUpdate
                 __instance.heartRate -= Time.deltaTime;
                 if (__instance.respiratoryRate > 45f)
                 {
-                    MultiplayerApi.ApplyAbsolute(__instance, "respiratoryRate", Mathf.MoveTowards(__instance.respiratoryRate, 40f, Time.deltaTime * 15f));
-                    //__instance.respiratoryRate = Mathf.MoveTowards(__instance.respiratoryRate, 40f, Time.deltaTime * 15f);
+                    //MultiplayerApi.ApplyAbsolute(__instance, "respiratoryRate", Mathf.MoveTowards(__instance.respiratoryRate, 40f, Time.deltaTime * 15f));
+                    __instance.respiratoryRate = Mathf.MoveTowards(__instance.respiratoryRate, 40f, Time.deltaTime * 15f);
                 }
             }
         }

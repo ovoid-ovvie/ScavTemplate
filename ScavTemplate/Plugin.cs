@@ -365,8 +365,8 @@ namespace SubEx
                     HungerBlock statusHungerBlock = body.GetStatus<HungerBlock>();
                     float temp = statusHungerBlock.Reception;
                     statusHungerBlock.Reception += ml * 4f * 15f * 0.1f;
-                    MultiplayerApi.Apply(body, "sicknessAmount", statusHungerBlock.Reception - temp);
-                    //body.sicknessAmount += statusHungerBlock.Reception - temp;
+                    //MultiplayerApi.Apply(body, "sicknessAmount", statusHungerBlock.Reception - temp);
+                    body.sicknessAmount += statusHungerBlock.Reception - temp;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -378,8 +378,8 @@ namespace SubEx
                     HungerBlock statusHungerBlock = body.GetStatus<HungerBlock>();
                     float temp = statusHungerBlock.Reception;
                     statusHungerBlock.Reception += ml * 4f * 15f;
-                    MultiplayerApi.Apply(body, "sicknessAmount", statusHungerBlock.Reception - temp);
-                    //body.sicknessAmount += statusHungerBlock.Reception - temp;
+                    //MultiplayerApi.Apply(body, "sicknessAmount", statusHungerBlock.Reception - temp);
+                    body.sicknessAmount += statusHungerBlock.Reception - temp;
                 },
                 healthUsable = false,
                 injectable = true
@@ -426,8 +426,8 @@ namespace SubEx
                     }
                     CBD statusCBD = body.GetStatus<CBD>();
                     statusCBD.Reception += ml / (20f / 25f);
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (ml * (20f / 25f))));
-                    //body.traumaAmount -= 0.35f * (ml * (20f / 25f));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (ml * (20f / 25f))));
+                    body.traumaAmount -= 0.35f * (ml * (20f / 25f));
                 },
                 healthUsable = false,
                 injectable = false
@@ -446,10 +446,10 @@ namespace SubEx
                     }
                     THC statusTHC = body.GetStatus<THC>();
                     statusTHC.Reception += ml * (20f / 25f);
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (ml * (20f / 25f)));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (ml * (20f / 25f))));
-                    //body.happiness += 0.33f * (ml * (20f / 25f));
-                    //body.hunger -= 0.25f * (ml * (20f / 25f));
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (ml * (20f / 25f)));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (ml * (20f / 25f))));
+                    body.happiness += 0.33f * (ml * (20f / 25f));
+                    body.hunger -= 0.25f * (ml * (20f / 25f));
                 },
                 healthUsable = false,
                 injectable = false
@@ -608,12 +608,12 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2));
-                    MultiplayerApi.Apply(body.limbs[0], "muscleHealth", - (ml * 2));
-                    MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2);
-                    //body.limbs[0].skinHealth -= ml * 2;
-                    //body.limbs[0].muscleHealth -= ml * 2;
-                    //body.limbs[0].pain += ml * 2f;
+                    //MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2));
+                    //MultiplayerApi.Apply(body.limbs[0], "muscleHealth", - (ml * 2));
+                    //MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2);
+                    body.limbs[0].skinHealth -= ml * 2;
+                    body.limbs[0].muscleHealth -= ml * 2;
+                    body.limbs[0].pain += ml * 2f;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -626,12 +626,12 @@ namespace SubEx
                     for (int i = 0; i < limbs.Length; i++)
                     {
                         Limb _limb = limbs[i];
-                        MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3));
-                        MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3));
-                        MultiplayerApi.Apply(_limb, "pain", ml * 10);
-                        //_limb.skinHealth -= ml * 3f;
-                        //_limb.muscleHealth -= ml * 3f;
-                        //_limb.pain += ml * 10f;
+                        //MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3));
+                        //MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3));
+                        //MultiplayerApi.Apply(_limb, "pain", ml * 10);
+                        _limb.skinHealth -= ml * 3f;
+                        _limb.muscleHealth -= ml * 3f;
+                        _limb.pain += ml * 10f;
                     }
                 },
                 qualities =
@@ -653,8 +653,8 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body, "thirst", ml / 100f * 10f);
-                    //body.thirst += ml / 100f * 10f;
+                    //MultiplayerApi.Apply(body, "thirst", ml / 100f * 10f);
+                    body.thirst += ml / 100f * 10f;
                 },
                 healthUsable = false,
                 injectable = false
@@ -671,23 +671,23 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body, "immunity", -(ml * 3f));
-                    MultiplayerApi.Apply(body, "respiratoryRate", -6f);
-                    //body.limbs[0].skinHealth -= ml * 2;
-                    //body.limbs[0].muscleHealth -= ml * 2;
-                    //body.immunity -= ml * 3f;
-                    //body.respiratoryRate -= 5f;
+                    //MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body, "immunity", -(ml * 3f));
+                    //MultiplayerApi.Apply(body, "respiratoryRate", -6f);
+                    body.limbs[0].skinHealth -= ml * 2;
+                    body.limbs[0].muscleHealth -= ml * 2;
+                    body.immunity -= ml * 3f;
+                    body.respiratoryRate -= 5f;
                     Limb[] limbs = body.limbs;
                     for (int i = 0; i < limbs.Length; i++)
                     {
                         Limb limb = limbs[i];
-                        MultiplayerApi.Apply(limb, "pain", ml);
-                        //limb.pain += ml;
+                        //MultiplayerApi.Apply(limb, "pain", ml);
+                        limb.pain += ml;
                     }
-                    MultiplayerApi.Apply(body, "sicknessAmount", ml * 4f);
-                    //body.sicknessAmount += ml * 4f;
+                    //MultiplayerApi.Apply(body, "sicknessAmount", ml * 4f);
+                    body.sicknessAmount += ml * 4f;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -696,22 +696,22 @@ namespace SubEx
                         return;
                     }
                     CUCoreUtils.TryGetBody(out Body body);
-                    MultiplayerApi.Apply(body, "immunity", -(ml * 5f));
-                    MultiplayerApi.Apply(body, "respiratoryRate", -(ml / 2f));
-                    MultiplayerApi.Apply(body, "sicknessAmount", ml * 10f);
-                    //body.immunity -= ml * 5f ;
-                    //body.respiratoryRate -= ml / 2;
-                    //body.sicknessAmount += ml * 10;
+                    //MultiplayerApi.Apply(body, "immunity", -(ml * 5f));
+                    //MultiplayerApi.Apply(body, "respiratoryRate", -(ml / 2f));
+                    //MultiplayerApi.Apply(body, "sicknessAmount", ml * 10f);
+                    body.immunity -= ml * 5f;
+                    body.respiratoryRate -= ml / 2;
+                    body.sicknessAmount += ml * 10;
                     Limb[] limbs = body.limbs;
                     for (int i = 0; i < limbs.Length; i++)
                     {
                         Limb _limb = limbs[i];
-                        MultiplayerApi.Apply(_limb, "pain", ml);
-                        MultiplayerApi.Apply(_limb, "skinHealth", -ml);
-                        MultiplayerApi.Apply(_limb, "muscleHealth", -ml);
-                        //_limb.pain += ml;
-                        //_limb.skinHealth -= ml;
-                        //_limb.muscleHealth -= ml;
+                        //MultiplayerApi.Apply(_limb, "pain", ml);
+                        //MultiplayerApi.Apply(_limb, "skinHealth", -ml);
+                        //MultiplayerApi.Apply(_limb, "muscleHealth", -ml);
+                        _limb.pain += ml;
+                        _limb.skinHealth -= ml;
+                        _limb.muscleHealth -= ml;
                     }
                 },
                 healthUsable = false,
@@ -729,12 +729,12 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2f);
-                    //body.limbs[0].skinHealth -= ml * 2;
-                    //body.limbs[0].muscleHealth -= ml * 2;
-                    //body.limbs[0].pain += ml * 2f;
+                    //MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2f);
+                    body.limbs[0].skinHealth -= ml * 2;
+                    body.limbs[0].muscleHealth -= ml * 2;
+                    body.limbs[0].pain += ml * 2f;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -747,12 +747,12 @@ namespace SubEx
                     for (int i = 0; i < limbs.Length; i++)
                     {
                         Limb _limb = limbs[i];
-                        MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3f));
-                        MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3f));
-                        MultiplayerApi.Apply(_limb, "pain", ml * 10f);
-                        //_limb.skinHealth -= ml * 3f;
-                        //_limb.muscleHealth -= ml * 3f;
-                        //_limb.pain += ml * 10f;
+                        //MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3f));
+                        //MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3f));
+                        //MultiplayerApi.Apply(_limb, "pain", ml * 10f);
+                        _limb.skinHealth -= ml * 3f;
+                        _limb.muscleHealth -= ml * 3f;
+                        _limb.pain += ml * 10f;
                     }
                 },
                 healthUsable = false,
@@ -771,8 +771,8 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body, "sicknessAmount", ml / 3f);
-                    //body.sicknessAmount += ml / 3;
+                    //MultiplayerApi.Apply(body, "sicknessAmount", ml / 3f);
+                    body.sicknessAmount += ml / 3;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -781,8 +781,8 @@ namespace SubEx
                         return;
                     }
                     CUCoreUtils.TryGetBody(out Body body);
-                    MultiplayerApi.Apply(body, "brainHealth", -(ml / 5f));
-                    //body.brainHealth -= ml / 5;
+                    //MultiplayerApi.Apply(body, "brainHealth", -(ml / 5f));
+                    body.brainHealth -= ml / 5;
                 },
                 healthUsable = false,
                 injectable = true
@@ -799,12 +799,12 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
-                    MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2f);
-                    //body.limbs[0].skinHealth -= ml * 2;
-                    //body.limbs[0].muscleHealth -= ml * 2;
-                    //body.limbs[0].pain += ml * 2f;
+                    //MultiplayerApi.Apply(body.limbs[0], "skinHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -(ml * 2f));
+                    //MultiplayerApi.Apply(body.limbs[0], "pain", ml * 2f);
+                    body.limbs[0].skinHealth -= ml * 2;
+                    body.limbs[0].muscleHealth -= ml * 2;
+                    body.limbs[0].pain += ml * 2f;
                 },
                 onHealthUse = (ml, limb) =>
                 {
@@ -817,12 +817,12 @@ namespace SubEx
                     for (int i = 0; i < limbs.Length; i++)
                     {
                         Limb _limb = limbs[i];
-                        MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3f));
-                        MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3f));
-                        MultiplayerApi.Apply(_limb, "pain", ml * 10f);
-                        //_limb.skinHealth -= ml * 3f;
-                        //_limb.muscleHealth -= ml * 3f;
-                        //_limb.pain += ml * 10f;
+                        //MultiplayerApi.Apply(_limb, "skinHealth", -(ml * 3f));
+                        //MultiplayerApi.Apply(_limb, "muscleHealth", -(ml * 3f));
+                        //MultiplayerApi.Apply(_limb, "pain", ml * 10f);
+                        _limb.skinHealth -= ml * 3f;
+                        _limb.muscleHealth -= ml * 3f;
+                        _limb.pain += ml * 10f;
                     }
                 },
                 qualities =
@@ -1037,10 +1037,10 @@ namespace SubEx
                     }
                     MDMA status = body.GetStatus<MDMA>();
                     status.Reception += 30f;
-                    MultiplayerApi.ApplyAbsolute(body, "energy", 100f);
-                    MultiplayerApi.Apply(body, "happiness", 30f * 0.5f);
-                    //body.energy = 100f;
-                    //body.happiness += 30f * 0.5f;
+                    //MultiplayerApi.ApplyAbsolute(body, "energy", 100f);
+                    //MultiplayerApi.Apply(body, "happiness", 30f * 0.5f);
+                    body.energy = 100f;
+                    body.happiness += 30f * 0.5f;
                     item.condition -= 1f / 3f;
                 }
             }, AssetLoader.LoadEmbeddedSprite("mdma.png"));
@@ -1224,14 +1224,14 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc;
                     statusCBD.Reception += cbd;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * thc);
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * thc));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * cbd));
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.happiness += 0.33f * thc;
-                    //body.hunger -= 0.25f * thc;
-                    //body.traumaAmount -= 0.35f * cbd;
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * thc);
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * thc));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * cbd));
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.happiness += 0.33f * thc;
+                    body.hunger -= 0.25f * thc;
+                    body.traumaAmount -= 0.35f * cbd;
+                    body.stamina -= 30;
                     if (statusTHC.Reception >= 55f)
                     {
                         lines = new string[]
@@ -1327,14 +1327,14 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 0.75f;
                     statusCBD.Reception += cbd * 0.75f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 0.75f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 0.75f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 0.75f)));
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.happiness += 0.33f * (thc * 0.75f);
-                    //body.hunger -= 0.25f * (thc * 0.75f);
-                    //body.traumaAmount -= 0.35f * (cbd * 0.75f);
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 0.75f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 0.75f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 0.75f)));
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.happiness += 0.33f * (thc * 0.75f);
+                    body.hunger -= 0.25f * (thc * 0.75f);
+                    body.traumaAmount -= 0.35f * (cbd * 0.75f);
+                    body.stamina -= 30;
                     if (statusTHC.Reception >= 55f)
                     {
                         lines = new string[]
@@ -1441,21 +1441,21 @@ namespace SubEx
                     status.Reception += 50f;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
-                        //body.happiness += 0.15f * 50f;
-                        //body.energy += 0.325f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
+                        body.happiness += 0.15f * 50f;
+                        body.energy += 0.325f * 50f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
-                        //body.happiness += 0.25f * 50f;
-                        //body.energy += 0.725f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
+                        body.happiness += 0.25f * 50f;
+                        body.energy += 0.725f * 50f;
                     }
                     status.StaminaReduction += 0.02f * 100f;
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.stamina -= 30;
                     if (status.Tolerance < 8)
                     {
                         string[] lines = new string[]
@@ -1614,28 +1614,28 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc;
                     statusCBD.Reception += cbd;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * thc);
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * thc));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * cbd));
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.happiness += 0.33f * thc;
-                    //body.hunger -= 0.25f * thc;
-                    //body.traumaAmount -= 0.35f * cbd;
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * thc);
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * thc));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * cbd));
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.happiness += 0.33f * thc;
+                    body.hunger -= 0.25f * thc;
+                    body.traumaAmount -= 0.35f * cbd;
+                    body.stamina -= 30;
                     statusNicotine.Reception += 50f;
                     if (statusNicotine.Tolerance >= 15f && statusNicotine.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
-                        //body.happiness += 0.15f * 50f;
-                        //body.energy += 0.325f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
+                        body.happiness += 0.15f * 50f;
+                        body.energy += 0.325f * 50f;
                     }
                     else if (statusNicotine.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
-                        //body.happiness += 0.25f * 50f;
-                        //body.energy += 0.725f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
+                        body.happiness += 0.25f * 50f;
+                        body.energy += 0.725f * 50f;
                     }
                     statusNicotine.StaminaReduction += 0.02f * 100f;
                     if (statusTHC.Reception >= 55f)
@@ -1746,21 +1746,21 @@ namespace SubEx
                     status.Reception += 50f;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
-                        //body.happiness += 0.15f * 50f;
-                        //body.energy += 0.325f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
+                        body.happiness += 0.15f * 50f;
+                        body.energy += 0.325f * 50f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
-                        //body.happiness += 0.25f * 50f;
-                        //body.energy += 0.725f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
+                        body.happiness += 0.25f * 50f;
+                        body.energy += 0.725f * 50f;
                     }
                     status.StaminaReduction += 0.02f * 50f;
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.stamina -= 30;
                     if (status.Tolerance < 8)
                     {
                         lines = new string[]
@@ -1906,28 +1906,28 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 0.75f;
                     statusCBD.Reception += cbd * 0.75f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 0.75f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 0.75f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 0.75f)));
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.happiness += 0.33f * (thc * 0.75f);
-                    //body.hunger -= 0.25f * (thc * 0.75f);
-                    //body.traumaAmount -= 0.35f * (cbd * 0.75f);
-                    //body.stamina -= 30;
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 0.75f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 0.75f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 0.75f)));
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.happiness += 0.33f * (thc * 0.75f);
+                    body.hunger -= 0.25f * (thc * 0.75f);
+                    body.traumaAmount -= 0.35f * (cbd * 0.75f);
+                    body.stamina -= 30;
                     statusNicotine.Reception += 50f;
                     if (statusNicotine.Tolerance >= 15f && statusNicotine.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
-                        //body.happiness += 0.15f * 50f;
-                        //body.energy += 0.325f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
+                        body.happiness += 0.15f * 50f;
+                        body.energy += 0.325f * 50f;
                     }
                     else if (statusNicotine.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
-                        //body.happiness += 0.25f * 50f;
-                        //body.energy += 0.725f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 50f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 50f);
+                        body.happiness += 0.25f * 50f;
+                        body.energy += 0.725f * 50f;
                     }
                     statusNicotine.StaminaReduction += 0.02f;
                     if (statusTHC.Reception >= 55f)
@@ -2050,21 +2050,21 @@ namespace SubEx
                     status.Reception += 100f;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 100f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
-                        //body.happiness += 0.15f * 100f;
-                        //body.energy += 0.325f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 100f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 50f);
+                        body.happiness += 0.15f * 100f;
+                        body.energy += 0.325f * 50f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 100f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 100f);
-                        //body.happiness += 0.25f * 100f;
-                        //body.energy += 0.725f * 100f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 100f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 100f);
+                        body.happiness += 0.25f * 100f;
+                        body.energy += 0.725f * 100f;
                     }
                     status.StaminaReduction += 0.02f * 100f;
-                    MultiplayerApi.Apply(body, "stamina", -50f);
-                    //body.stamina -= 50;
+                    //MultiplayerApi.Apply(body, "stamina", -50f);
+                    body.stamina -= 50;
                     if (status.Tolerance < 8)
                     {
                         lines = new string[]
@@ -2211,28 +2211,28 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 1.5f;
                     statusCBD.Reception += cbd * 1.5f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.5f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.5f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.5f)));
-                    MultiplayerApi.Apply(body, "stamina", -30f);
-                    //body.happiness += 0.33f * (thc * 1.5f);
-                    //body.hunger -= 0.25f * (thc * 1.5f);
-                    //body.traumaAmount -= 0.35f * (cbd * 1.5f);
-                    //body.stamina -= 50;
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.5f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.5f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.5f)));
+                    //MultiplayerApi.Apply(body, "stamina", -30f);
+                    body.happiness += 0.33f * (thc * 1.5f);
+                    body.hunger -= 0.25f * (thc * 1.5f);
+                    body.traumaAmount -= 0.35f * (cbd * 1.5f);
+                    body.stamina -= 50;
                     statusNicotine.Reception += 80f;
                     if (statusNicotine.Tolerance >= 15f && statusNicotine.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 80f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 80f);
-                        //body.happiness += 0.15f * 80f;
-                        //body.energy += 0.325f * 80f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 80f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 80f);
+                        body.happiness += 0.15f * 80f;
+                        body.energy += 0.325f * 80f;
                     }
                     else if (statusNicotine.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 80f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 80f);
-                        //body.happiness += 0.25f * 80f;
-                        //body.energy += 0.725f * 80f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 80f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 80f);
+                        body.happiness += 0.25f * 80f;
+                        body.energy += 0.725f * 80f;
                     }
                     statusNicotine.StaminaReduction += 0.02f * 80f;
                     if (statusTHC.Reception >= 55f)
@@ -2319,17 +2319,17 @@ namespace SubEx
                     status.Reception += 25f;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 25f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 25f);
-                        //body.happiness += 0.15f * 25f;
-                        //body.energy += 0.325f * 25f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 25f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 25f);
+                        body.happiness += 0.15f * 25f;
+                        body.energy += 0.325f * 25f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 25f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 25f);
-                        //body.happiness += 0.25f * 25f;
-                        //body.energy += 0.725f * 25f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 25f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 25f);
+                        body.happiness += 0.25f * 25f;
+                        body.energy += 0.725f * 25f;
                     }
                     if (status.Tolerance < 8)
                     {
@@ -2417,17 +2417,17 @@ namespace SubEx
                     status.Reception += 10f;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 10f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 10f);
-                        //body.happiness += 0.15f * 10f;
-                        //body.energy += 0.325f * 10f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 10f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 10f);
+                        body.happiness += 0.15f * 10f;
+                        body.energy += 0.325f * 10f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 10f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 10f);
-                        //body.happiness += 0.25f * 10f;
-                        //body.energy += 0.725f * 10f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 10f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 10f);
+                        body.happiness += 0.25f * 10f;
+                        body.energy += 0.725f * 10f;
                     }
                     if (status.Tolerance < 8)
                     {
@@ -2540,21 +2540,21 @@ namespace SubEx
                     }
                     Nicotine status = body.GetStatus<Nicotine>();
                     status.Reception += 35f;
-                    MultiplayerApi.Apply(body, "happiness", -4f);
-                    //body.happiness -= 4;
+                    //MultiplayerApi.Apply(body, "happiness", -4f);
+                    body.happiness -= 4;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 35f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 35f);
-                        //body.happiness += 0.15f * 35f;
-                        //body.energy += 0.325f * 35f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 35f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 35f);
+                        body.happiness += 0.15f * 35f;
+                        body.energy += 0.325f * 35f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 35f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 35f);
-                        //body.happiness += 0.25f * 35f;
-                        //body.energy += 0.725f * 35f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 35f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 35f);
+                        body.happiness += 0.25f * 35f;
+                        body.energy += 0.725f * 35f;
                     }
                     body.talker.Talk(Locale.GetCharacter("eatBad"));
                     Sound.Play("eatCrunch", body.transform.position);
@@ -2579,16 +2579,16 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body, "hunger", 10f);
-                    MultiplayerApi.Apply(body, "happiness", -2f);
-                    MultiplayerApi.Apply(body, "immunity", 1f);
-                    //body.hunger += 10;
-                    //body.happiness -= 2;
-                    //body.immunity += 1;
+                    //MultiplayerApi.Apply(body, "hunger", 10f);
+                    //MultiplayerApi.Apply(body, "happiness", -2f);
+                    //MultiplayerApi.Apply(body, "immunity", 1f);
+                    body.hunger += 10;
+                    body.happiness -= 2;
+                    body.immunity += 1;
                     if (UnityEngine.Random.value <= 0.66)
                     {
-                        MultiplayerApi.Apply(body, "sicknessAmount", UnityEngine.Random.Range(10, 30));
-                        //body.sicknessAmount += UnityEngine.Random.Range(10, 30);
+                        //MultiplayerApi.Apply(body, "sicknessAmount", UnityEngine.Random.Range(10, 30));
+                        body.sicknessAmount += UnityEngine.Random.Range(10, 30);
                     }
                     body.talker.Talk(Locale.GetCharacter("eatBad"));
                     Sound.Play("eatCrunch", body.transform.position);
@@ -2616,25 +2616,25 @@ namespace SubEx
                     }
                     Nicotine status = body.GetStatus<Nicotine>();
                     status.Reception += 35f;
-                    MultiplayerApi.Apply(body, "hunger", 10f);
-                    MultiplayerApi.Apply(body, "happiness", -4f);
-                    MultiplayerApi.Apply(body, "immunity", 1f);
-                    //body.hunger += 10;
-                    //body.happiness -= 4;
-                    //body.immunity += 1;
+                    //MultiplayerApi.Apply(body, "hunger", 10f);
+                    //MultiplayerApi.Apply(body, "happiness", -4f);
+                    //MultiplayerApi.Apply(body, "immunity", 1f);
+                    body.hunger += 10;
+                    body.happiness -= 4;
+                    body.immunity += 1;
                     if (status.Tolerance >= 15f && status.Tolerance < 35f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.15f * 35f);
-                        MultiplayerApi.Apply(body, "energy", 0.325f * 35f);
-                        //body.happiness += 0.15f * 35f;
-                        //body.energy += 0.325f * 35f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.15f * 35f);
+                        //MultiplayerApi.Apply(body, "energy", 0.325f * 35f);
+                        body.happiness += 0.15f * 35f;
+                        body.energy += 0.325f * 35f;
                     }
                     else if (status.Tolerance < 15f)
                     {
-                        MultiplayerApi.Apply(body, "happiness", 0.25f * 35f);
-                        MultiplayerApi.Apply(body, "energy", 0.725f * 35f);
-                        //body.happiness += 0.25f * 50f;
-                        //body.energy += 0.725f * 50f;
+                        //MultiplayerApi.Apply(body, "happiness", 0.25f * 35f);
+                        //MultiplayerApi.Apply(body, "energy", 0.725f * 35f);
+                        body.happiness += 0.25f * 50f;
+                        body.energy += 0.725f * 50f;
                     }
                     body.talker.Talk(Locale.GetCharacter("eatBad"));
                     Sound.Play("eatCrunch", body.transform.position);
@@ -2687,12 +2687,12 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 1.25f;
                     statusCBD.Reception += cbd * 1.25f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
-                    //body.happiness += 0.33f * (thc * 1.25f);
-                    //body.hunger -= 0.25f * (thc * 1.25f);
-                    //body.traumaAmount -= 0.35f * (cbd * 1.25f);
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
+                    body.happiness += 0.33f * (thc * 1.25f);
+                    body.hunger -= 0.25f * (thc * 1.25f);
+                    body.traumaAmount -= 0.35f * (cbd * 1.25f);
                     body.talker.Talk(Locale.GetCharacter("eatBad"));
                     Sound.Play("eatCrunch", body.transform.position);
                     item.condition = 0f;
@@ -2744,12 +2744,12 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 1.25f;
                     statusCBD.Reception += cbd * 1.25f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
-                    //body.happiness += 0.33f * (thc * 1.25f);
-                    //body.hunger -= 0.25f * (thc * 1.25f);
-                    //body.traumaAmount -= 0.35f * (cbd * 1.25f);
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
+                    body.happiness += 0.33f * (thc * 1.25f);
+                    body.hunger -= 0.25f * (thc * 1.25f);
+                    body.traumaAmount -= 0.35f * (cbd * 1.25f);
                     body.talker.Talk(Locale.GetCharacter("eatMediocre"));
                     Sound.Play("eatCrunch", body.transform.position);
                     item.condition = 0f;
@@ -2801,12 +2801,12 @@ namespace SubEx
                     }
                     statusTHC.Reception += thc * 1.25f;
                     statusCBD.Reception += cbd * 1.25f;
-                    MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
-                    MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
-                    MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
-                    //body.happiness += 0.33f * (thc * 1.25f);
-                    //body.hunger -= 0.25f * (thc * 1.25f);
-                    //body.traumaAmount -= 0.35f * (cbd * 1.25f);
+                    //MultiplayerApi.Apply(body, "happiness", 0.33f * (thc * 1.25f));
+                    //MultiplayerApi.Apply(body, "hunger", -(0.25f * (thc * 1.25f)));
+                    //MultiplayerApi.Apply(body, "traumaAmount", -(0.35f * (cbd * 1.25f)));
+                    body.happiness += 0.33f * (thc * 1.25f);
+                    body.hunger -= 0.25f * (thc * 1.25f);
+                    body.traumaAmount -= 0.35f * (cbd * 1.25f);
                     body.talker.Talk(Locale.GetCharacter("eatGood"));
                     Sound.Play("eatCrunch", body.transform.position);
                     item.condition = 0f;
@@ -2832,8 +2832,8 @@ namespace SubEx
                     }
                     Psychedelic status = body.GetStatus<Psychedelic>();
                     status.Reception += 25f;
-                    MultiplayerApi.Apply(body, "happiness", 17.5f);
-                    //body.happiness += 17.5f;
+                    //MultiplayerApi.Apply(body, "happiness", 17.5f);
+                    body.happiness += 17.5f;
                     item.condition = 0f;
                 }
             }, AssetLoader.LoadEmbeddedSprite("psilocybin.png"));
@@ -2857,8 +2857,8 @@ namespace SubEx
                     }
                     Psychedelic status = body.GetStatus<Psychedelic>();
                     status.Reception += 50f;
-                    MultiplayerApi.Apply(body, "happiness", 25f);
-                    //body.happiness += 25f;
+                    //MultiplayerApi.Apply(body, "happiness", 25f);
+                    body.happiness += 25f;
                     item.condition = 0f;
                 }
             }, AssetLoader.LoadEmbeddedSprite("lsd.png"));
@@ -2882,8 +2882,8 @@ namespace SubEx
                     }
                     Psychedelic status = body.GetStatus<Psychedelic>();
                     status.DMT += 25f;
-                    MultiplayerApi.Apply(body, "happiness", 35f);
-                    //body.happiness += 35f;
+                    //MultiplayerApi.Apply(body, "happiness", 35f);
+                    body.happiness += 35f;
                     string[] lines = new string[]
                     {
                         "The walls... they just dissolved.",
@@ -2918,17 +2918,17 @@ namespace SubEx
                 usable = false,
                 rec = new Recognition(5)
             }, AssetLoader.LoadEmbeddedSprite("separationkit.png"));
-
-            ItemRegistry.Register("precisionscale", new ItemInfo
-            {
-                fullName = "Precision Scale",
-                description = "A small scale accurate to the microgram. Useful for making things that need very specific ingredient amounts.",
-                category = "utility",
-                weight = 0.3f,
-                value = 12,
-                usable = false,
-                rec = new Recognition(6)
-            }, AssetLoader.LoadEmbeddedSprite("precisionscale.png"), 0);
+            
+            //ItemRegistry.Register("precisionscale", new ItemInfo
+            //{
+            //    fullName = "Precision Scale",
+            //    description = "A small scale accurate to the microgram. Useful for making things that need very specific ingredient amounts.",
+            //    category = "utility",
+            //    weight = 0.3f,
+            //    value = 12,
+            //    usable = false,
+            //    rec = new Recognition(6)
+            //}, AssetLoader.LoadEmbeddedSprite("precisionscale.png"), 0);
 
             ItemRegistry.Register("phstrips", new ItemInfo
             {
@@ -2982,12 +2982,12 @@ namespace SubEx
                     {
                         return;
                     }
-                    MultiplayerApi.Apply(body.limbs[0], "skinHealth", -60f);
-                    MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -40f);
-                    MultiplayerApi.Apply(body.limbs[0], "pain", 100f);
-                    //body.limbs[0].skinHealth -= 60f;
-                    //body.limbs[0].muscleHealth -= 40f;
-                    //body.limbs[0].pain += 100f;
+                    //MultiplayerApi.Apply(body.limbs[0], "skinHealth", -60f);
+                    //MultiplayerApi.Apply(body.limbs[0], "muscleHealth", -40f);
+                    //MultiplayerApi.Apply(body.limbs[0], "pain", 100f);
+                    body.limbs[0].skinHealth -= 60f;
+                    body.limbs[0].muscleHealth -= 40f;
+                    body.limbs[0].pain += 100f;
                     item.condition -= 0.1f;
                 },
                 rec = new Recognition(4)
