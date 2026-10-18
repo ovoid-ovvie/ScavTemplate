@@ -34,7 +34,7 @@ internal class Patches
     }
 }
 
-[StatusOptions(Key = "com.subex.flag", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.flag", ClientAuthoritative = true)]
 public sealed class SubExFlag : BodyStatus
 {
     public bool Sedated;
@@ -46,7 +46,7 @@ public sealed class SubExFlag : BodyStatus
     public bool OverdosingOnSedatives;
 }
 
-[StatusOptions(Key = "com.subex.prev", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.prev", ClientAuthoritative = true)]
 public sealed class PrevStats : BodyStatus
 {
     public float Thirst;
@@ -55,40 +55,40 @@ public sealed class PrevStats : BodyStatus
     public float Mood;
 }
 
-[StatusOptions(Key = "com.subex.thirstblock", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.thirstblock", ClientAuthoritative = true)]
 public sealed class ThirstBlock : BodyStatus
 {
     public float Reception;
     public bool Reverse;
 }
 
-[StatusOptions(Key = "com.subex.hungerblock", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.hungerblock", ClientAuthoritative = true)]
 public sealed class HungerBlock : BodyStatus
 {
     public float Reception;
 }
 
-[StatusOptions(Key = "com.subex.diuretic", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.diuretic", ClientAuthoritative = true)]
 public sealed class Diuretic : BodyStatus
 {
     public float Reception;
 }
 
-[StatusOptions(Key = "com.subex.antihistamine", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.antihistamine", ClientAuthoritative = true)]
 public sealed class Antihistamine : BodyStatus
 {
     public float Reception;
     public int Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.alpha2", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.alpha2", ClientAuthoritative = true)]
 public sealed class Alpha2 : BodyStatus
 {
     public float Reception;
     public int Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.benzo", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.benzo", ClientAuthoritative = true)]
 public sealed class Benzo : BodyStatus
 {
     public float Reception;
@@ -98,33 +98,33 @@ public sealed class Benzo : BodyStatus
     public int Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.barbiturate", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.barbiturate", ClientAuthoritative = true)]
 public sealed class Barbiturate : BodyStatus
 {
     public float Reception;
     public int Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.zdrug", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.zdrug", ClientAuthoritative = true)]
 public sealed class ZDrug : BodyStatus
 {
     public float Reception;
     public int Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.cbd", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.cbd", ClientAuthoritative = true)]
 public sealed class CBD : BodyStatus
 {
     public float Reception;
 }
 
-[StatusOptions(Key = "com.subex.thc", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.thc", ClientAuthoritative = true)]
 public sealed class THC : BodyStatus
 {
     public float Reception;
 }
 
-[StatusOptions(Key = "com.subex.nicotine", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.nicotine", ClientAuthoritative = true)]
 public sealed class Nicotine : BodyStatus
 {
     public float Reception;
@@ -133,28 +133,28 @@ public sealed class Nicotine : BodyStatus
     public float StaminaReduction;
 }
 
-[StatusOptions(Key = "com.subex.steroid", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.steroid", ClientAuthoritative = true)]
 public sealed class Steroid : BodyStatus
 {
     public float Reception;
     public float Abuse;
 }
 
-[StatusOptions(Key = "com.subex.ketamine", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.ketamine", ClientAuthoritative = true)]
 public sealed class Ketamine : BodyStatus
 {
     public float Reception;
     public float Toxicity;
 }
 
-[StatusOptions(Key = "com.subex.psychedelic", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.psychedelic", ClientAuthoritative = true)]
 public sealed class Psychedelic : BodyStatus
 {
     public float Reception;
     public float DMT;
 }
 
-[StatusOptions(Key = "com.subex.mdma", ClientAuthoritative = true)]
+//[StatusOptions(Key = "com.subex.mdma", ClientAuthoritative = true)]
 public sealed class MDMA : BodyStatus
 {
     public float Reception;

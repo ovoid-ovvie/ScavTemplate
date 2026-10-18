@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using System.IO;
 using UnityEngine;
 
 namespace SubEx
@@ -11,25 +12,31 @@ namespace SubEx
         private float originalTimeScale;
         private ConfigEntry<bool> configWarningDismissed;
         private Texture2D blackTexture;
+        private ConfigFile localConfig;
 
         public void Initialize(ConfigFile config)
         {
+            localConfig = config;
             configWarningDismissed = config.Bind("General", "WarningDismissed", false, "Has the player dismissed the epilepsy warning?");
+
+            if (!File.Exists(config.ConfigFilePath))
+            {
+                config.Save();
+            }
 
             if (configWarningDismissed.Value == true)
             {
                 showWarning = false;
                 Destroy(this);
+                return;
             }
-            else
-            {
-                originalTimeScale = Time.timeScale;
-                Time.timeScale = 0f;
 
-                blackTexture = new Texture2D(1, 1);
-                blackTexture.SetPixel(0, 0, Color.black);
-                blackTexture.Apply();
-            }
+            originalTimeScale = Time.timeScale;
+            Time.timeScale = 0f;
+
+            blackTexture = new Texture2D(1, 1);
+            blackTexture.SetPixel(0, 0, Color.black);
+            blackTexture.Apply();
         }
 
         private void Update()
@@ -39,7 +46,7 @@ namespace SubEx
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            if (Input.anyKeyDown && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 DismissWarning();
             }
@@ -77,7 +84,7 @@ namespace SubEx
                                  "If you experience dizziness or discomfort, stop playing immediately.";
 
             GUI.Box(new Rect(x, y, width, height), warningText, boxStyle);
-            GUI.Label(new Rect(x, y + height - 50, width, 30), "[ Press any key to continue ]", promptStyle);
+            GUI.Label(new Rect(x, y + height - 50, width, 30), "[ Press ENTER to continue ]", promptStyle);
         }
 
         private void DismissWarning()
@@ -89,7 +96,7 @@ namespace SubEx
             Cursor.visible = true;
 
             configWarningDismissed.Value = true;
-            configWarningDismissed.ConfigFile.Save();
+            localConfig.Save();
 
             Destroy(blackTexture);
             Destroy(this);
