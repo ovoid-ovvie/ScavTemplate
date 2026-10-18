@@ -668,6 +668,10 @@ public static class AllowUseItemUpdate
     [HarmonyPrefix]
     private static bool Prefix(Body __instance, ref bool __result)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return false;
+        }
         Benzo statusBenzo = __instance.GetStatus<Benzo>();
         Ketamine statusKetamine = __instance.GetStatus<Ketamine>();
         THC statusTHC = __instance.GetStatus<THC>();
@@ -709,6 +713,10 @@ public static class BodyCanHonkShoo
     [HarmonyPrefix]
     private static bool Prefix(Body __instance, ref bool __result)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return false;
+        }
         SubExFlag flag = __instance.GetStatus<SubExFlag>();
         Antihistamine statusAntihistamine = __instance.GetStatus<Antihistamine>();
         Alpha2 statusAlpha2 = __instance.GetStatus<Alpha2>();
@@ -728,6 +736,10 @@ public static class BodyWakeUpUpdate
     [HarmonyPrefix]
     private static bool Prefix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return false;
+        }
         SubExFlag flag = __instance.GetStatus<SubExFlag>();
         if (flag.Sedated && !flag.OverdosingOnSedatives && (__instance.energy <= 99f || (__instance.curSleep == Body.SleepQuality.Mediocre && __instance.energy <= 85f) || (__instance.curSleep == Body.SleepQuality.Bad && __instance.energy <= 70f)))
         {
@@ -805,6 +817,10 @@ public static class HandleBodyStatusUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return;
+        }
         PrevStats prev = __instance.GetStatus<PrevStats>();
         ThirstBlock status = __instance.GetStatus<ThirstBlock>();
         prev.Thirst = __instance.thirst;
@@ -820,6 +836,10 @@ public static class HandleBodyStatusUpdate
     private static void Postfix(Body __instance)
     {
         if (__instance.brainHealth < 0.1f)
+        {
+            return;
+        }
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
         {
             return;
         }
@@ -1318,6 +1338,10 @@ public static class BodyPeriodicChecksUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return;
+        }
         CUCoreUtils.TryGetBody(out Body body);
         if (__instance.brainHealth < 0.1f)
         {
@@ -1627,6 +1651,10 @@ public static class BodyCirculationUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return;
+        }
         PrevStats prev = __instance.GetStatus<PrevStats>();
         prev.HeartRate = __instance.heartRate;
     }
@@ -1634,6 +1662,10 @@ public static class BodyCirculationUpdate
     [HarmonyPostfix]
     private static void Postfix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return;
+        }
         if (__instance.brainHealth < 0.1f)
         {
             return;
@@ -1772,6 +1804,10 @@ public static class BodyStatusUpdate
     [HarmonyPostfix]
     private static void Postfix(Body __instance)
     {
+        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        {
+            return;
+        }
         if (__instance.brainHealth < 0.1f)
         {
             return;
