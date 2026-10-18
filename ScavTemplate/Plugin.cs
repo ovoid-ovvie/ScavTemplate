@@ -30,7 +30,7 @@ namespace SubEx
     {
         public const string ModGUID = "com.shiri.substancesExpanded";
         public const string ModName = "Shiri's Substances Expanded";
-        public const string ModVersion = "2.0.1";
+        public const string ModVersion = "2.0.2";
 
         internal static new ManualLogSource Logger;
         private readonly Harmony _harmony = new(ModGUID);
