@@ -668,7 +668,7 @@ public static class AllowUseItemUpdate
     [HarmonyPrefix]
     private static bool Prefix(Body __instance, ref bool __result)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return false;
         }
@@ -713,7 +713,7 @@ public static class BodyCanHonkShoo
     [HarmonyPrefix]
     private static bool Prefix(Body __instance, ref bool __result)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return false;
         }
@@ -736,7 +736,7 @@ public static class BodyWakeUpUpdate
     [HarmonyPrefix]
     private static bool Prefix(Body __instance)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return false;
         }
@@ -817,7 +817,7 @@ public static class HandleBodyStatusUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return;
         }
@@ -1339,7 +1339,7 @@ public static class BodyPeriodicChecksUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return;
         }
@@ -1652,7 +1652,7 @@ public static class BodyCirculationUpdate
     [HarmonyPrefix]
     private static void Prefix(Body __instance)
     {
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return;
         }
@@ -1665,7 +1665,7 @@ public static class BodyCirculationUpdate
     private static void Postfix(Body __instance)
     {
         CUCoreUtils.TryGetBody(out Body body);
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return;
         }
@@ -1808,7 +1808,7 @@ public static class BodyStatusUpdate
     private static void Postfix(Body __instance)
     {
         CUCoreUtils.TryGetBody(out Body body);
-        if (!CUCoreUtils.TryGetBody(out var localBody) || localBody != __instance)
+        if (PlayerCamera.main == null || PlayerCamera.main.body != __instance)
         {
             return;
         }
