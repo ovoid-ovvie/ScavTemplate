@@ -662,6 +662,60 @@ public static class BrainDamagedThing
     }
 }
 
+//[HarmonyPatch(typeof(Body), "HandleBodyTemperature")]
+//public static class BodyTemperature
+//{
+//    [HarmonyPrefix]
+//    private static bool BodyTemperature_Prefix(Body __instance)
+//    {
+//        CUCoreUtils.TryGetBody(out Body body);
+//        Painkillers pnk;
+//        body.TryGetComponent<Painkillers>(out pnk);
+//        Steroid status = body.GetStatus<Steroid>();
+//        if (Time.time - __instance.tempCheckTime >= 1f)
+//        {
+//            __instance.tempCheckTime = Time.time;
+//            float totalInsulation = __instance.GetTotalInsulation();
+//            float addition = status.Abuse / 45f;
+//            float thing = WorldGeneration.world.ambientTemperature + addition;
+//            __instance.temperature = Mathf.Lerp(__instance.temperature, thing, __instance.baseTemperatureLerpRate / totalInsulation);
+//            float num = 1f - Mathf.Clamp01(0.3f - __instance.energy * 0.01f);
+//            if (pnk && pnk.actualOpiateReception > 0f)
+//            {
+//                num -= pnk.actualOpiateReception * 0.005f;
+//            }
+//            __instance.temperature += 0.04f * num;
+//            if (__instance.temperature > 37.5f)
+//            {
+//                float num2 = (__instance.temperature - 37.5f) * 20f;
+//                if (__instance.wetness < num2)
+//                {
+//                    __instance.wetness += 1f;
+//                }
+//            }
+//            __instance.temperature -= __instance.wetness * 0.001f;
+//            if (__instance.temperature < 36.5f)
+//            {
+//                __instance.temperature += Mathf.Max(__instance.hunger * 0.01f, 0.3f) * 0.03f * num;
+//            }
+//            if (__instance.temperature < 32f)
+//            {
+//                __instance.hunger -= 0.035f;
+//                __instance.temperature += 0.01f;
+//            }
+//        }
+//        if (__instance.temperature > 42f)
+//        {
+//            __instance.brainHealth -= Time.deltaTime * 0.5f;
+//        }
+//        if (__instance.temperature > 41f)
+//        {
+//            __instance.bloodVolume -= Time.deltaTime * 0.15f;
+//        }
+//        return false;
+//    }
+//}
+
 [HarmonyPatch(typeof(Body), "allowUseItem", MethodType.Getter)]
 public static class AllowUseItemUpdate
 {
@@ -2280,7 +2334,7 @@ public static class BodyStatusUpdate
                 3,
                 icon,
                 LocaleRegistry.Get("moodle", "lethalSteroidAbuse", "Lethal Steroid Abuse"),
-                LocaleRegistry.Get("moodle", "lethalSteroidAbuseDesc", "You’ve been abusing steroids to the extreme. Your heart is ready to burst under its own pressure."),
+                LocaleRegistry.Get("moodle", "lethalSteroidAbuseDesc", "You’ve been abusing steroids to the extreme. The sweat won't stop, and your heart is ready to burst under its own pressure."),
                 critical: true,
                 chippedOnly: false,
                 important: true,
@@ -2295,7 +2349,7 @@ public static class BodyStatusUpdate
                 2,
                 icon,
                 LocaleRegistry.Get("moodle", "steroidAbuse", "Steroid Abuse"),
-                LocaleRegistry.Get("moodle", "steroidAbuseDesc", "You’ve been using steroids way too much. Greatly elevated heart rate and blood pressure. Your mood is highly volatile."),
+                LocaleRegistry.Get("moodle", "steroidAbuseDesc", "You’ve been using steroids way too much. Greatly elevated heart rate and blood pressure. Your mood is highly volatile and you feel hot."),
                 critical: false,
                 chippedOnly: false,
                 important: true,
@@ -2310,7 +2364,7 @@ public static class BodyStatusUpdate
                 1,
                 icon,
                 LocaleRegistry.Get("moodle", "steroidOveruse", "Steroid Overuse"),
-                LocaleRegistry.Get("moodle", "steroidOveruseDesc", "You’ve been using steroids too much. Elevated heart rate and blood pressure. You feel anxious."),
+                LocaleRegistry.Get("moodle", "steroidOveruseDesc", "You’ve been using steroids too much. Elevated heart rate and blood pressure. You feel anxious and slightly warm."),
                 critical: false,
                 chippedOnly: false,
                 important: true,
