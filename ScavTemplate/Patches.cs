@@ -171,7 +171,7 @@ public static class GrabberPlantDropPatch
 {
     public static void Postfix(BuildingEntity __instance)
     {
-        if (__instance.health >= 0.5f)
+        if (__instance.GetHealth() >= 0.5f)
         {
             return;
         }
